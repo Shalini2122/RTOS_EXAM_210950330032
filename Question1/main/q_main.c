@@ -1,13 +1,12 @@
 /**1.Create 3 realtime tasks each with the periodicity T1=1000ms ,T2=2000ms and T3=5000ms.Also create two additional tasks T4 and T5 where T4 send integer data to T5 using Message Queues**/
 
 #include<stdio.h>
-#include <driver/gpio.h>
 #include <freertos/FreeRTOS.h>
 #include<freertos/task.h>
 #include<freertos/queue.h>
 
-xQueueHandle xQueue;
-TaskHandle_t xHandle_1;
+xQueueHandle xQueue;//Queue Handlers
+TaskHandle_t xHandle_1;//Task Handlers
 TaskHandle_t xHandle_2;
 TaskHandle_t xHandle_3;
 
@@ -58,7 +57,7 @@ static void vreceiveTask(void *pv)
 		xstatus=xQueueReceive(xQueue,&lrecievevalue,xTickToWait);
 		if(xstatus == pdPASS)
 		{
-			vPrintString("Received= \n",lrecievevalue);
+			vPrintString("Received= \n",lrecievevalue);//RECEIVE INTEGER VALUE
 		}
 		else
 		{
